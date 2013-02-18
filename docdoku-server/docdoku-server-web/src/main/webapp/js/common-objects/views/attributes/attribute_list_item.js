@@ -1,9 +1,9 @@
 define([
-	"views/components/list_item"
+	"common-objects/views/components/list_item"
 ], function (
 	ListItemView
 ) {
-	var DocumentAttributeListItemView = ListItemView.extend({
+	var AttributeListItemView = ListItemView.extend({
 
 		tagName: "div",
 
@@ -68,5 +68,5 @@ define([
 
 	});
 
-	return DocumentAttributeListItemView;
+	return AttributeListItemView;
 });

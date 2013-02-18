@@ -6,74 +6,103 @@
     </div>
     <div class="modal-body">
 
-        <form id="form-component" class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">{{i18n.PART_NUMBER}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getNumber}}</span>
+
+
+        <div class="tabs">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-component-general" data-toggle="tab">{{i18n.GENERAL}}</a></li>
+                <li><a href="#tab-component-attributes" data-toggle="tab">{{i18n.ATTRIBUTES}}</a></li>
+                <li><a href="#tab-component-files" data-toggle="tab">{{i18n.CAD_FILE}}</a></li>
+            </ul>
+
+            <div class="tab-content form-horizontal">
+
+                <div id="tab-component-general" class="tab-pane active">
+
+                    <form id="form-component" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.PART_NUMBER}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getNumber}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.PART_NAME}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getName}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.VERSION}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getVersion}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.ITERATION}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getIteration}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.IS_STANDARD_PART}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.isStandardPart}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.AUTHOR}}</label>
+                            <div class="controls">
+                                <span class="help-inline"><a class="author-popover">{{component.getAuthor}}</a></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.AMOUNT}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getAmount}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.CHECKOUT_BY}}</label>
+                            <div class="controls">
+                                <span class="help-inline"><a class="checkout-user-popover">{{#component.getCheckoutUser}}{{name}}{{/component.getCheckoutUser}}</a></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.CHECKOUT_DATE}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getFormattedCheckoutDate}}</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{{i18n.DESCRIPTION}}</label>
+                            <div class="controls">
+                                <span class="help-inline">{{component.getDescription}}</span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.PART_NAME}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getName}}</span>
+
+                <div id="tab-component-attributes" class="tab-pane attributes">
+                    <a class="btn" id="add-attributes">{{i18n.APPEND}}</a>
+                    <div id="attributes-list" class="attributes-edit"></div>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.VERSION}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getVersion}}</span>
+                <div id="tab-component-files" class="tab-pane files">
+                    cad file
                 </div>
+
             </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.ITERATION}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getIteration}}</span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.IS_STANDARD_PART}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.isStandardPart}}</span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.AUTHOR}}</label>
-                <div class="controls">
-                    <span class="help-inline"><a class="author-popover">{{component.getAuthor}}</a></span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.AMOUNT}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getAmount}}</span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.CHECKOUT_BY}}</label>
-                <div class="controls">
-                    <span class="help-inline"><a class="checkout-user-popover">{{#component.getCheckoutUser}}{{name}}{{/component.getCheckoutUser}}</a></span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.CHECKOUT_DATE}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getFormattedCheckoutDate}}</span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">{{i18n.DESCRIPTION}}</label>
-                <div class="controls">
-                    <span class="help-inline">{{component.getDescription}}</span>
-                </div>
-            </div>
-        </form>
+
+
+        </div>
+
+
 
     </div>
 
     <div class="modal-footer">
         {{#component.isCheckoutByConnectedUser}}
-        <button id="save-component" class="btn btn-primary" form="form">
+        <button id="save-component" class="btn btn-primary" form="form-component">
             {{i18n.SAVE}}
         </button>
         <a id="cancel-iteration" class="btn cancel" data-dismiss="modal">{{i18n.CANCEL}}</a>

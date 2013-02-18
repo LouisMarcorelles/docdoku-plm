@@ -1,7 +1,7 @@
 define([
 	"require",
 	"i18n!localization/nls/document-management-strings",
-	"text!templates/alert.html"
+	"text!common-objects/templates/alert.html"
 ], function (
 	require,
 	i18n,

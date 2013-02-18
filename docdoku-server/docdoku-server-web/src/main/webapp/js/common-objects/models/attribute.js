@@ -1,6 +1,4 @@
-define([
-    "i18n!localization/nls/document-management-strings"
-], function (i18n) {
+define(function () {
 
     var Attribute = Backbone.Model.extend({
 

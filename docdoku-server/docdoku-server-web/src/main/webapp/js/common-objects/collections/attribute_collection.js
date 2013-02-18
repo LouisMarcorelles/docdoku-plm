@@ -1,11 +1,11 @@
 define([
-    "models/attribute"
+    "common-objects/models/attribute"
 ], function (AttributeModel) {
 
     var AttributeCollection = Backbone.Collection.extend({
-        model: AttributeModel
+        model: AttributeModel,
+        className:"AttributeCollection"
     });
 
-    AttributeCollection.className="AttributeCollection";
     return AttributeCollection;
 });

@@ -1,15 +1,15 @@
 define([
-	"views/base",
-	"views/document/document_attribute_list",
-	"text!templates/document/document_attributes.html",
+	"common-objects/views/base",
+	"common-objects/views/attributes/attribute_list",
+	"text!common-objects/templates/attributes/attributes.html",
     "i18n!localization/nls/document-management-strings"
 ], function (
 	BaseView,
-	DocumentAttributeListView,
+	AttributeListView,
 	template,
     i18n
 ) {
-	var DocumentAttributesView = BaseView.extend({
+	var AttributesView = BaseView.extend({
 
 		template: Mustache.compile(template),
 
@@ -41,7 +41,7 @@ define([
 
 		rendered: function () {
 			this.attributesView = this.addSubView(
-				new DocumentAttributeListView({
+				new AttributeListView({
 					el: "#items-" + this.cid,
 					collection: this.collection
 				})
@@ -66,5 +66,5 @@ define([
         }
 
 	});
-	return DocumentAttributesView;
+	return AttributesView;
 });

@@ -1,6 +1,6 @@
 var sceneManager;
 
-define(["views/search_view", "views/parts_tree_view", "views/bom_view", "views/part_metadata_view", "modules/navbar-module/views/navbar_view","SceneManager"], function (SearchView, PartsTreeView, BomView, PartMetadataView, NavBarView, SceneManager) {
+define(["router","views/search_view", "views/parts_tree_view", "views/bom_view", "views/part_metadata_view", "modules/navbar-module/views/navbar_view","SceneManager"], function (Router,SearchView, PartsTreeView, BomView, PartMetadataView, NavBarView, SceneManager) {
 
     var AppView = Backbone.View.extend({
 
@@ -81,6 +81,9 @@ define(["views/search_view", "views/parts_tree_view", "views/bom_view", "views/p
         }
 
     });
+
+    Router.getInstance();
+    Backbone.history.start();
 
     return AppView;
 });

@@ -1,6 +1,6 @@
 define([
-	"views/components/list_item",
-	"text!templates/template_new_attribute_list_item.html"
+	"common-objects/views/components/list_item",
+	"text!common-objects/templates/attributes/template_new_attribute_list_item.html"
 ], function (
 	ListItemView,
 	template

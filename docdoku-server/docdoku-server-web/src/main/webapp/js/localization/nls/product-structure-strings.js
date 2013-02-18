@@ -42,7 +42,11 @@ define({
         SPACE: "space",
         ROTATE_SCENE: "Rotate the scene",
         SCROLL_UP: "scroll up",
-        SCROLL_DOWN: "scroll down"
+        SCROLL_DOWN: "scroll down",
+        "GENERAL": "General",
+        "ATTRIBUTES": "Attributes",
+        "CAD_FILE": "CAD File",
+        "APPEND":"add"
     },
     "fr": true,
     "es": true

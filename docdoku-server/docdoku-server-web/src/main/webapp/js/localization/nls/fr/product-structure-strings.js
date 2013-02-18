@@ -34,5 +34,9 @@ define({
     SPACE: "espace",
     ROTATE_SCENE: "Pivoter la scène",
     SCROLL_UP: "défilement haut",
-    SCROLL_DOWN: "défilement bas"
+    SCROLL_DOWN: "défilement bas",
+    "GENERAL": "Général",
+    "ATTRIBUTES": "Attributs",
+    "CAD_FILE": "Fichier CAD",
+    "APPEND":"Ajouter"
 });

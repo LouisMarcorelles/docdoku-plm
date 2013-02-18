@@ -1,7 +1,7 @@
 define([
-    "views/components/modal",
+    "common-objects/views/components/modal",
     "views/file_list",
-    "views/document/document_attributes",
+    "common-objects/views/attributes/attributes",
     "views/document/document_lifecycle",
     "models/tag",
     "views/document_tag",
@@ -118,6 +118,7 @@ define([
             this.$el.html(html);
 
             this.tabs = this.$('.nav-tabs li');
+
 
             this.customAttributesView =
                 this.addSubView(
