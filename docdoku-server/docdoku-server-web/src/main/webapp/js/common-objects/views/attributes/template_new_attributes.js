@@ -1,7 +1,7 @@
 define([
 	"common-objects/views/base",
 	"common-objects/views/attributes/template_new_attribute_list",
-	"text!templates/template_new_attributes.html"
+	"text!common-objects/templates/attributes/template_new_attributes.html"
 ], function (
 	BaseView,
 	TemplateNewAttributeListView,
