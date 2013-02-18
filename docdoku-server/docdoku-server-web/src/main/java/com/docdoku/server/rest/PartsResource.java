@@ -21,12 +21,17 @@ package com.docdoku.server.rest;
 
 import com.docdoku.core.product.PartMaster;
 import com.docdoku.core.product.PartMasterKey;
+import com.docdoku.core.product.PartRevision;
 import com.docdoku.core.product.PartRevisionKey;
 import com.docdoku.core.security.UserGroupMapping;
 import com.docdoku.core.services.*;
 import com.docdoku.server.rest.dto.ComponentDTO;
+import com.docdoku.server.rest.dto.PartRevisionDTO;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
@@ -43,6 +48,28 @@ public class PartsResource {
     private IProductManagerLocal productService;
 
     public PartsResource() {
+    }
+
+    private Mapper mapper;
+
+    @PostConstruct
+    public void init() {
+        mapper = DozerBeanMapperSingletonWrapper.getInstance();
+    }
+
+    @GET
+    @Path("{partKey}")
+    @Produces("application/json;charset=UTF-8")
+    public Response getRevision(@PathParam("workspaceId") String pWorkspaceId, @PathParam("partKey") String pPartKey) throws UserNotFoundException, WorkspaceNotFoundException, UserNotActiveException, PartRevisionNotFoundException {
+        try {
+            PartRevisionKey revisionKey = new PartRevisionKey(new PartMasterKey(pWorkspaceId, getPartNumber(pPartKey)), getPartRevision(pPartKey));
+            PartRevision partRevision = productService.getPartRevision(revisionKey);
+            PartRevisionDTO partRevisionDTO = mapper.map(partRevision, PartRevisionDTO.class);
+            partRevisionDTO.setNumber(partRevision.getPartNumber());
+            return Response.ok(partRevisionDTO).build();
+        } catch (com.docdoku.core.services.ApplicationException ex) {
+            throw new RestApiException(ex.toString(), ex.getMessage());
+        }
     }
 
     @PUT
