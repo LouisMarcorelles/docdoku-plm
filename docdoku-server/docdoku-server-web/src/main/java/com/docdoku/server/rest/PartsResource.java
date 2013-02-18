@@ -26,7 +26,7 @@ import com.docdoku.core.product.PartRevisionKey;
 import com.docdoku.core.security.UserGroupMapping;
 import com.docdoku.core.services.*;
 import com.docdoku.server.rest.dto.ComponentDTO;
-import com.docdoku.server.rest.dto.PartRevisionDTO;
+import com.docdoku.server.rest.dto.PartDTO;
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 
@@ -64,9 +64,10 @@ public class PartsResource {
         try {
             PartRevisionKey revisionKey = new PartRevisionKey(new PartMasterKey(pWorkspaceId, getPartNumber(pPartKey)), getPartRevision(pPartKey));
             PartRevision partRevision = productService.getPartRevision(revisionKey);
-            PartRevisionDTO partRevisionDTO = mapper.map(partRevision, PartRevisionDTO.class);
-            partRevisionDTO.setNumber(partRevision.getPartNumber());
-            return Response.ok(partRevisionDTO).build();
+            PartDTO partDTO = mapper.map(partRevision, PartDTO.class);
+            partDTO.setNumber(partRevision.getPartNumber());
+            partDTO.setPartKey(partRevision.getPartNumber() + "-" + partRevision.getVersion());
+            return Response.ok(partDTO).build();
         } catch (com.docdoku.core.services.ApplicationException ex) {
             throw new RestApiException(ex.toString(), ex.getMessage());
         }

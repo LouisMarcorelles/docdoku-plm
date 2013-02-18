@@ -27,8 +27,9 @@ import java.util.Date;
 import java.util.List;
 
 @XmlRootElement
-public class PartRevisionDTO implements Serializable {
+public class PartDTO implements Serializable {
 
+    private String partKey;
     private String number;
     private String version;
     private UserDTO author;
@@ -39,7 +40,7 @@ public class PartRevisionDTO implements Serializable {
     private Date checkOutDate;
     private WorkflowDTO workflow;
 
-    public PartRevisionDTO() {
+    public PartDTO() {
     }
 
     public String getNumber() {
@@ -114,4 +115,11 @@ public class PartRevisionDTO implements Serializable {
         this.workflow = workflow;
     }
 
+    public String getPartKey() {
+        return partKey;
+    }
+
+    public void setPartKey(String partKey) {
+        this.partKey = partKey;
+    }
 }
