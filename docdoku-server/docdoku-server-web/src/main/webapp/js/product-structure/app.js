@@ -11,8 +11,12 @@ define(["router","views/search_view", "views/parts_tree_view", "views/bom_view",
             "click #bom_view_btn": "bomMode"
         },
 
-        updateBom: function() {
-            this.bomView.updateContent(this.partsTreeView.componentSelected);
+        updateBom: function(showRoot) {
+            if(showRoot){
+                this.bomView.showRoot(this.partsTreeView.componentSelected);
+            }else{
+                this.bomView.updateContent(this.partsTreeView.componentSelected);
+            }
         },
 
         sceneMode: function() {
@@ -49,7 +53,6 @@ define(["router","views/search_view", "views/parts_tree_view", "views/bom_view",
 
             this.inBomMode = false;
 
-            //this.bomView = new BomContentView().render();
             this.bomView = new BomView().render();
 
             sceneManager = new SceneManager();
@@ -65,9 +68,9 @@ define(["router","views/search_view", "views/parts_tree_view", "views/bom_view",
             sceneManager.init();
         },
 
-        onComponentSelected: function() {
+        onComponentSelected: function(showRoot) {
             if (this.isInBomMode()) {
-                this.updateBom();
+                this.updateBom(showRoot);
             }
             this.showPartMetadata();
             sceneManager.setPathForIframe(this.partsTreeView.componentSelected.getPath());

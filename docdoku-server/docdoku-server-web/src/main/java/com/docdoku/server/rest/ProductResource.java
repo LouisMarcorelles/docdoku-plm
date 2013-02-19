@@ -119,6 +119,8 @@ public class ProductResource {
                 partsDTO[i] = mapper.map(lastRevision, PartDTO.class);
                 partsDTO[i].setNumber(lastRevision.getPartNumber());
                 partsDTO[i].setPartKey(lastRevision.getPartNumber() + "-" + lastRevision.getVersion());
+                partsDTO[i].setName(lastRevision.getPartMaster().getName());
+                partsDTO[i].setStandardPart(lastRevision.getPartMaster().isStandardPart());
             }
 
             return partsDTO;

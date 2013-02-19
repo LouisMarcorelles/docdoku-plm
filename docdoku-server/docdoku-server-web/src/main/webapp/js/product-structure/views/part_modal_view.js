@@ -1,27 +1,25 @@
-define(['text!templates/component_modal.html', 'i18n!localization/nls/product-structure-strings', "common-objects/views/attributes/attribute_list"], function(template, i18n,ComponentAttributeListView) {
+define(['text!templates/part_modal.html', 'i18n!localization/nls/product-structure-strings', "common-objects/views/attributes/attribute_list"], function(template, i18n, ComponentAttributeListView) {
 
-    var ComponentModalView = Backbone.View.extend({
+    var PartModalView = Backbone.View.extend({
 
         template: Mustache.compile(template),
 
         events: {
-            "submit #form-component":"onSubmitForm",
-            "hidden #component-modal": "onHidden",
+            "submit #form-part":"onSubmitForm",
+            "hidden #part-modal": "onHidden",
             "click #add-attributes" : "addAttribute"
         },
 
         render: function() {
             this.$el.html(this.template({
-                component: this.model,
+                part: this.model,
                 i18n: i18n
             }));
             this.$modal = this.$('.modal');
             this.$authorLink = this.$('.author-popover');
+            this.$checkoutUserLink = this.$('.checkout-user-popover');
             this.bindUserPopover();
             this.initAttributesView();
-
-            console.log(this);
-
             return this;
         },
 
@@ -35,6 +33,9 @@ define(['text!templates/component_modal.html', 'i18n!localization/nls/product-st
 
         bindUserPopover: function() {
             this.$authorLink.userPopover(this.model.getAuthorLogin(), this.model.getNumber(), "right");
+            if(this.model.isCheckout()){
+                this.$checkoutUserLink.userPopover(this.model.getCheckOutUserLogin(), this.model.getNumber(),"right");
+            }
         },
 
         initAttributesView:function(){
@@ -47,15 +48,13 @@ define(['text!templates/component_modal.html', 'i18n!localization/nls/product-st
                 collection: this.attributes
             });
 
-            _.each(this.model.get("attributes"),function(item){
+            _.each(this.model.getLastIteration().getAttributes().models ,function(item){
                 that.attributes.add({
-                    name: item.name,
-                    type: item.type,
-                    value: item.value
+                    name: item.getName(),
+                    type: item.getType(),
+                    value: item.getValue()
                 });
             });
-
-            //this.attributesView.addAndFillAttribute(item);
 
             this.$("#attributes-list").html(this.attributesView.$el);
 
@@ -72,7 +71,6 @@ define(['text!templates/component_modal.html', 'i18n!localization/nls/product-st
 
         onSubmitForm:function(e){
 
-            /*saving component*/
             this.model.save({
                 instanceAttributes: this.attributesView.collection.toJSON()
             });
@@ -84,6 +82,6 @@ define(['text!templates/component_modal.html', 'i18n!localization/nls/product-st
 
     });
 
-    return ComponentModalView;
+    return PartModalView;
 
 });

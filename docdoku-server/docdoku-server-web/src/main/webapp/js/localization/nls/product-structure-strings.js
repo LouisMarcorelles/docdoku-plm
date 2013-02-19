@@ -13,6 +13,7 @@ define({
         AUTHOR: "Author",
         AMOUNT: "Amount",
         CHECKOUT_BY: "Checked out by",
+        CREATION_DATE: "Creation date",
         CHECKOUT_DATE: "Checkout date",
         DESCRIPTION: "Description",
         _DATE_FORMAT: "mm-dd-yyyy HH:MM:ss",
@@ -46,7 +47,8 @@ define({
         "GENERAL": "General",
         "ATTRIBUTES": "Attributes",
         "CAD_FILE": "CAD File",
-        "APPEND":"add"
+        "APPEND":"add",
+        STANDARD_PART:"Standard part"
     },
     "fr": true,
     "es": true

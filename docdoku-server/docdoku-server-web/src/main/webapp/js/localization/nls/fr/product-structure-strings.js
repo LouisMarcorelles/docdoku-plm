@@ -6,6 +6,7 @@ define({
     CLOSE: "Fermer",
     AUTHOR: "Auteur",
     AMOUNT: "Quantité",
+    CREATION_DATE: "Date de création",
     CHECKOUT_DATE: "Date de réservation",
     CHECKOUT_BY: "Réservé par",
     _DATE_FORMAT: "dd-mm-yyyy HH:MM:ss",
@@ -38,5 +39,6 @@ define({
     "GENERAL": "Général",
     "ATTRIBUTES": "Attributs",
     "CAD_FILE": "Fichier CAD",
-    "APPEND":"Ajouter"
+    "APPEND":"Ajouter",
+    STANDARD_PART:"Standard part"
 });

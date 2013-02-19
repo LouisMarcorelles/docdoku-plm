@@ -32,6 +32,7 @@ public class PartDTO implements Serializable {
     private String partKey;
     private String number;
     private String version;
+    private String name;
     private UserDTO author;
     private Date creationDate;
     private String description;
@@ -39,6 +40,7 @@ public class PartDTO implements Serializable {
     private UserDTO checkOutUser;
     private Date checkOutDate;
     private WorkflowDTO workflow;
+    private boolean standardPart;
 
     public PartDTO() {
     }
@@ -81,6 +83,22 @@ public class PartDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isStandardPart() {
+        return standardPart;
+    }
+
+    public void setStandardPart(boolean standardPart) {
+        this.standardPart = standardPart;
     }
 
     public List<PartIterationDTO> getPartIterations() {
