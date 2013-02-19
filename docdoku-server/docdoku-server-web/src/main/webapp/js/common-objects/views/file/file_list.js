@@ -1,6 +1,6 @@
 define([
     "i18n!localization/nls/document-management-strings",
-    "text!templates/file_list.html",
+    "text!common-objects/templates/file/file_list.html",
     "models/attached_file"
 ], function(i18n, template, AttachedFile) {
     var FileListView = Backbone.View.extend({
@@ -70,7 +70,7 @@ define([
         addOneFile: function(attachedFile) {
             var self = this;
 
-            require(["views/file"], function(FileView) {
+            require(["common-objects/views/file/file"], function(FileView) {
                 var fileView = new FileView({
                     model: attachedFile,
                     filesToDelete: self.filesToDelete,

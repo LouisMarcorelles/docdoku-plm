@@ -1,5 +1,5 @@
 define([
-    "text!templates/file.html"
+    "text!common-objects/templates/file/file.html"
 ], function (template) {
     var FileView = Backbone.View.extend({
 

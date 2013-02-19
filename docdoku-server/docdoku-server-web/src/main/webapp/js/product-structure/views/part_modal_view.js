@@ -1,13 +1,17 @@
-define(['text!templates/part_modal.html', 'i18n!localization/nls/product-structure-strings', "common-objects/views/attributes/attribute_list"], function(template, i18n, ComponentAttributeListView) {
+define(["common-objects/views/components/modal",
+    "common-objects/views/file/file_list",
+    'text!templates/part_modal.html',
+    'i18n!localization/nls/product-structure-strings',
+    "common-objects/views/attributes/attributes"],
+    function(ModalView, FileListView, template, i18n, PartAttributesView) {
 
-    var PartModalView = Backbone.View.extend({
+    var PartModalView = ModalView.extend({
 
         template: Mustache.compile(template),
 
         events: {
             "submit #form-part":"onSubmitForm",
-            "hidden #part-modal": "onHidden",
-            "click #add-attributes" : "addAttribute"
+            "hidden #part-modal": "onHidden"
         },
 
         render: function() {
@@ -15,16 +19,14 @@ define(['text!templates/part_modal.html', 'i18n!localization/nls/product-structu
                 part: this.model,
                 i18n: i18n
             }));
-            this.$modal = this.$('.modal');
+
+            this.editMode = this.model.isCheckoutByConnectedUser() ;
+
             this.$authorLink = this.$('.author-popover');
             this.$checkoutUserLink = this.$('.checkout-user-popover');
             this.bindUserPopover();
             this.initAttributesView();
             return this;
-        },
-
-        show: function() {
-            this.$modal.modal("show");
         },
 
         onHidden: function() {
@@ -44,29 +46,17 @@ define(['text!templates/part_modal.html', 'i18n!localization/nls/product-structu
 
             this.attributes = new Backbone.Collection();
 
-            this.attributesView = new ComponentAttributeListView({
-                collection: this.attributes
+            this.partAttributesView = new PartAttributesView({
+                el:this.$("#attributes-list")
             });
+
+            this.partAttributesView.setEditMode(this.editMode);
+            this.partAttributesView.render();
 
             _.each(this.model.getLastIteration().getAttributes().models ,function(item){
-                that.attributes.add({
-                    name: item.getName(),
-                    type: item.getType(),
-                    value: item.getValue()
-                });
+                that.partAttributesView.addAndFillAttribute(item);
             });
 
-            this.$("#attributes-list").html(this.attributesView.$el);
-
-        },
-
-        addAttribute: function () {
-
-            this.attributes.add({
-                name: "",
-                type: "TEXT",
-                value: ""
-            });
         },
 
         onSubmitForm:function(e){

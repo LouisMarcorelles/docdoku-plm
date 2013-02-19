@@ -25,11 +25,9 @@ define(['text!templates/bom_item.html', "models/part"], function(template, Part)
             var self = this;
             require(['views/part_modal_view'], function(PartModalView) {
                 self.model.fetch().success(function(){
-                    var partModalView = new PartModalView({
+                    new PartModalView({
                         model: self.model
-                    });
-                    $('body').append(partModalView.render().el);
-                    partModalView.show();
+                    }).show();
                 });
             });
         },
