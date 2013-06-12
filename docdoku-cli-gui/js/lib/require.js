@@ -1743,6 +1743,7 @@ var requirejs, require, define;
      * @param {Error} err the error object.
      */
     req.onError = function (err) {
+        console.log(err.get)
         throw err;
     };
 

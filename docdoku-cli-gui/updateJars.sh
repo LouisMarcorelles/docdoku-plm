@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /home/cangac/Projets/gitsrc/docdoku-plm/docdoku-cli;
-mvn clean install;
+cd /home/morgan/gitsrc/docdoku-plm/docdoku-cli;
+/home/morgan/apps/apache-maven-2.2.1/bin/mvn clean install;
 
-cp /home/cangac/Projets/gitsrc/docdoku-plm/docdoku-cli/target/*.jar /home/cangac/Projets/gitsrc/docdoku-plm/docdoku-cli-gui/dplm/;
+cp /home/morgan/gitsrc/docdoku-plm/docdoku-cli/target/*.jar /home/morgan/gitsrc/docdoku-plm/docdoku-cli-gui/dplm/;

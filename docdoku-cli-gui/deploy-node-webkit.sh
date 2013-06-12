@@ -7,4 +7,4 @@ zip -r ../app.zip *;
 cd ..;
 mv app.zip app.nw;
 echo "Run the app";
-/home/cangac/Projets/node-webkit-v0.5.1-linux-x64/nw app.nw;
+/home/morgan/apps/node-webkit-v0.4.2-linux-x64/nw app.nw;
